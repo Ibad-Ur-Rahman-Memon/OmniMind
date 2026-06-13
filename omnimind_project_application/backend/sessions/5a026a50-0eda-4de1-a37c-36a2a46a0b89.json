@@ -1,0 +1,186 @@
+{
+  "session_id": "5a026a50-0eda-4de1-a37c-36a2a46a0b89",
+  "history": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Mira. I'm genuinely glad you're here today. This is a completely safe and confidential space \u2014 you can share whatever is on your mind, at your own pace, without any judgment at all.\n\nTo start us off \u2014 how have you been feeling lately?"
+    },
+    {
+      "role": "user",
+      "content": "I have been having really bad headaches every day for weeks. I also feel very tired but I can't sleep properly at night. I don't know what is wrong with me."
+    },
+    {
+      "role": "assistant",
+      "content": "It sounds like you're really struggling with a lot of discomfort right now. Those headaches and fatigue can be so debilitating, and not being able to sleep well on top of it all must be really frustrating for you.\n\nCan you tell me more about what's going through your mind when you're trying to fall asleep at night? What thoughts or worries might be keeping you awake?"
+    },
+    {
+      "role": "user",
+      "content": "Everything just feels very heavy. I wake up at 3am and then can't go back to sleep. By morning I feel like I haven't slept at all."
+    },
+    {
+      "role": "assistant",
+      "content": "It sounds like you're feeling really overwhelmed and that it's hard for you to shake off that feeling of heaviness, even when you're trying to rest. You're describing a sense of exhaustion that's not just about lack of sleep, but also about feeling weighed down.\n\nYou said you wake up at 3am. Can you tell me more about what you're thinking or feeling in those moments when you're awake? Is there anything specific that's on your mind, or is it more of a general feeling of being stuck?"
+    },
+    {
+      "role": "user",
+      "content": "I used to enjoy reading and painting but now I can't even pick up a book. Nothing feels interesting anymore. I just sit and stare."
+    },
+    {
+      "role": "assistant",
+      "content": "It sounds like you're missing the things that used to bring you joy and pleasure, and that's really hard to deal with. You're describing a sense of emotional numbing, like you're not feeling much of anything anymore.\n\nIt's as if you're saying, \"I used to be someone who loved reading and painting, but now those things just feel empty and uninteresting to me.\" That must be really tough to accept.\n\nCan you remember a specific moment when you felt like things started to change for you, and you lost interest in those things that used to bring you joy?"
+    },
+    {
+      "role": "user",
+      "content": "My parents keep saying I am lazy. They don't understand. I try to do things but I just have no energy. I feel like I am letting everyone down."
+    },
+    {
+      "role": "assistant",
+      "content": "It sounds like you're feeling really frustrated and misunderstood by your parents. They're seeing your lack of energy and motivation as laziness, but you're experiencing it as a genuine struggle.\n\nYou feel like you're trying to do things, but you just can't muster the energy, and that's making you feel like you're not meeting expectations, not just from your parents, but from yourself too.\n\nCan you tell me more about how it feels when you think about letting everyone down? What's going through your mind in those moments?"
+    },
+    {
+      "role": "assistant",
+      "content": "One of the most powerful tools in psychology is called a thought record. It helps us slow down automatic thoughts and examine them like a scientist \u2014 looking at the actual evidence. Can you think of a specific situation recently that felt distressing? We'll use it as our example."
+    },
+    {
+      "role": "assistant",
+      "content": "One of the most powerful tools in psychology is called a thought record. It helps us slow down automatic thoughts and examine them like a scientist \u2014 looking at the actual evidence. Can you think of a specific situation recently that felt distressing? We'll use it as our example."
+    },
+    {
+      "role": "assistant",
+      "content": "One of the most powerful tools in psychology is called a thought record. It helps us slow down automatic thoughts and examine them like a scientist \u2014 looking at the actual evidence. Can you think of a specific situation recently that felt distressing? We'll use it as our example."
+    },
+    {
+      "role": "user",
+      "content": "Nothing"
+    },
+    {
+      "role": "assistant",
+      "content": "It can be challenging to think of a specific situation when we're feeling overwhelmed. Let's try a gentle exercise instead. Would you be willing to take a few deep breaths with me and notice how your body feels right now? Sometimes, this can help us connect with our physical sensations and quiet our minds just a bit."
+    },
+    {
+      "role": "user",
+      "content": "Sometimes I think I am a burden to my family. I feel so worthless. Like I am not good enough for anything."
+    },
+    {
+      "role": "assistant",
+      "content": "It sounds like you're carrying a heavy weight of self-doubt and worthlessness. Those thoughts can be so painful and pervasive, can't they? I want you to know that you're not alone in feeling this way, and it's not because you're a burden or not good enough.\n\nCan you tell me more about what's behind these thoughts of worthlessness? Is there something specific that's triggered this feeling, or has it been a long-standing pattern for you?"
+    },
+    {
+      "role": "user",
+      "content": "I have been like this for almost two months now. I thought it would pass but it keeps getting worse."
+    },
+    {
+      "role": "assistant",
+      "content": "It sounds like you're feeling stuck in a really difficult place, and that's really hard to deal with. Two months is a long time to feel this way, and it's no wonder you thought it would pass by now.\n\nIt's like you're saying, \"I thought I'd get better, but instead I'm getting worse.\" That's a really tough realization, and it's no wonder you're feeling hopeless.\n\nCan you tell me what you think might be helping you cope with these feelings, even if it's just small things? Sometimes, it's the little things that can make a big difference."
+    }
+  ],
+  "turn_count": 6,
+  "progress": [
+    {
+      "turn": 3,
+      "PHQ-9": 2,
+      "GAD-7": 0,
+      "PSS-10": 0,
+      "SPIN": 0,
+      "risk": "low"
+    },
+    {
+      "turn": 6,
+      "PHQ-9": 6,
+      "GAD-7": 0,
+      "PSS-10": 0,
+      "SPIN": 0,
+      "risk": "moderate"
+    }
+  ],
+  "exercises_done": [
+    {
+      "id": "thought_record",
+      "name": "Thought Record",
+      "completed": false
+    },
+    {
+      "id": "thought_record",
+      "name": "Thought Record",
+      "completed": false
+    },
+    {
+      "id": "thought_record",
+      "name": "Thought Record",
+      "completed": true,
+      "feedback": "Nothing "
+    }
+  ],
+  "perf_rows": [
+    {
+      "turn": 1,
+      "latency_ms": 2206.5,
+      "prompt_tokens": 1334,
+      "completion_tokens": 76,
+      "response_length": 369,
+      "rag_used": true,
+      "emotion": "neutral",
+      "timestamp": "2026-04-18T15:18:34.653710+00:00"
+    },
+    {
+      "turn": 2,
+      "latency_ms": 535.6,
+      "prompt_tokens": 1443,
+      "completion_tokens": 108,
+      "response_length": 486,
+      "rag_used": true,
+      "emotion": "neutral",
+      "timestamp": "2026-04-18T15:18:48.111750+00:00"
+    },
+    {
+      "turn": 3,
+      "latency_ms": 631.5,
+      "prompt_tokens": 1632,
+      "completion_tokens": 119,
+      "response_length": 552,
+      "rag_used": true,
+      "emotion": "neutral",
+      "timestamp": "2026-04-18T15:19:17.122697+00:00"
+    },
+    {
+      "turn": 4,
+      "latency_ms": 456.1,
+      "prompt_tokens": 1722,
+      "completion_tokens": 108,
+      "response_length": 526,
+      "rag_used": true,
+      "emotion": "neutral",
+      "timestamp": "2026-04-18T15:19:46.437367+00:00"
+    },
+    {
+      "turn": 5,
+      "latency_ms": 761.6,
+      "prompt_tokens": 1272,
+      "completion_tokens": 66,
+      "response_length": 318,
+      "rag_used": false,
+      "emotion": "neutral",
+      "timestamp": "2026-04-18T15:25:20.445241+00:00"
+    },
+    {
+      "turn": 6,
+      "latency_ms": 1642.9,
+      "prompt_tokens": 2147,
+      "completion_tokens": 97,
+      "response_length": 439,
+      "rag_used": true,
+      "emotion": "depression",
+      "timestamp": "2026-04-18T15:26:26.850080+00:00"
+    },
+    {
+      "turn": 7,
+      "latency_ms": 1314.1,
+      "prompt_tokens": 2257,
+      "completion_tokens": 124,
+      "response_length": 539,
+      "rag_used": true,
+      "emotion": "neutral",
+      "timestamp": "2026-04-18T15:26:48.431731+00:00"
+    }
+  ]
+}

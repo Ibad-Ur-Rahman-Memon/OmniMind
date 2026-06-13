@@ -1,0 +1,98 @@
+OMNIMIND CLINICAL KNOWLEDGE BASE
+=================================
+
+MAJOR DEPRESSIVE DISORDER (MDD) — DSM-5 Criteria
+Requires 5+ symptoms during same 2-week period. Must include depressed mood or anhedonia.
+Symptoms: depressed mood most of the day; loss of interest/pleasure; significant weight change;
+insomnia or hypersomnia; psychomotor agitation or retardation; fatigue or loss of energy;
+worthlessness or excessive guilt; reduced concentration; recurrent thoughts of death.
+Severity: Mild (5 symptoms, minor impairment); Moderate; Severe (most symptoms, marked impairment).
+PHQ-9: 0-4 minimal, 5-9 mild, 10-14 moderate, 15-19 moderately severe, 20-27 severe.
+PHQ-9 Q9 (suicidality) any score >0 requires immediate safety assessment.
+
+GENERALIZED ANXIETY DISORDER (GAD) — DSM-5 Criteria
+Excessive anxiety/worry more days than not for 6+ months about multiple topics.
+3+ symptoms: restlessness or keyed up; easily fatigued; difficulty concentrating;
+irritability; muscle tension; sleep disturbance.
+GAD-7: 0-4 minimal, 5-9 mild, 10-14 moderate, 15-21 severe.
+Sensitivity 89%, Specificity 82% at cutoff of 10.
+
+PANIC DISORDER — DSM-5
+Recurrent unexpected panic attacks peaking within minutes. Symptoms: palpitations,
+sweating, trembling, shortness of breath, chest pain, nausea, dizziness, derealization,
+fear of losing control, fear of dying, paresthesias, chills or hot flushes.
+
+SOCIAL ANXIETY DISORDER — DSM-5
+Marked fear in social situations involving scrutiny by others. Situations avoided or
+endured with intense distress. Duration 6+ months.
+SPIN: 0-20 none, 21-30 mild, 31-40 moderate, 41-50 severe, 51-68 very severe.
+
+PSS-10 Scoring: 0-13 low, 14-26 moderate, 27-40 high perceived stress.
+Positive items (4,5,7,8) are reverse scored.
+
+COGNITIVE BEHAVIORAL THERAPY — Core Model
+Situation → Automatic Thought → Emotion → Behavior.
+Cognitive distortions: all-or-nothing thinking, catastrophizing, mind reading,
+fortune telling, emotional reasoning, should statements, personalization, mental filtering.
+
+Thought Records: 7-column format. Situation → Automatic thought → Emotions (rate 0-100%) →
+Evidence FOR → Evidence AGAINST → Balanced alternative → Re-rate emotions.
+
+Behavioral Activation: Activity monitoring → Pleasure/mastery ratings → Activity scheduling.
+Action precedes motivation — schedule first, mood follows. Evidence: Martell et al. (2010).
+
+Exposure Therapy: Fear hierarchy 0-100 SUDS. Begin ~30 SUDS. Stay until anxiety reduces 50%.
+Never escape at peak anxiety — reinforces avoidance.
+
+4-7-8 Breathing: Inhale 4, hold 7, exhale 8. Repeat 4 cycles.
+Activates parasympathetic nervous system via vagal stimulation.
+Evidence: Gerritsen & Band (2018), Frontiers in Human Neuroscience.
+
+5-4-3-2-1 Grounding: 5 see, 4 touch, 3 hear, 2 smell, 1 taste.
+Interrupts anxiety spiral. Evidence: DBT (Linehan, 1993); trauma-focused CBT.
+
+Progressive Muscle Relaxation: Systematically tense (5-7 sec) and release muscle groups.
+Reduces physiological anxiety including heart rate and skin conductance.
+Evidence: Jacobson (1938). Daily practice 2+ weeks for lasting effect.
+
+Scheduled Worry Time: Specific 15-minute daily window for worrying.
+Postpone worries outside window. Active engagement during window.
+Evidence: Borkovec et al. (1983) — evidence-based for GAD.
+
+MINDFULNESS-BASED COGNITIVE THERAPY (MBCT)
+Evidence-based for depression relapse prevention. 8-week program.
+Key skill: decentering — observing thoughts as events, not facts.
+"I notice I am having the thought that I am worthless" vs "I am worthless."
+
+CRISIS ASSESSMENT — C-SSRS
+Levels: 1=wish to be dead; 2=non-specific ideation; 3=ideation without plan;
+4=ideation with intent, no plan; 5=ideation with specific plan and intent.
+Any active ideation with plan = immediate intervention required.
+Safety planning: warning signs, coping strategies, support contacts, means restriction.
+
+THERAPEUTIC RELATIONSHIP
+Strongest predictor of outcomes across all psychotherapies.
+Core conditions (Rogers, 1957): empathy, unconditional positive regard, genuineness.
+Rupture-repair strengthens the therapeutic alliance over time.
+
+PAKISTAN MENTAL HEALTH CONTEXT
+80%+ treatment gap — most people with mental disorders receive no treatment.
+Only 400-500 registered psychiatrists for 230 million people.
+Barriers: stigma ("jinn/weakness/izzat"), cost, geography, religious misconceptions.
+Somatization: emotional distress expressed through physical symptoms — headaches,
+chest tightness, fatigue, body pain ("dil ki bimari").
+Religious coping: namaz, dua, Quran recitation are genuine protective factors — respect them.
+Family: involvement expected and often protective; extended family support is culturally central.
+Gender: men rarely seek help (weakness stigma); women present through somatic complaints.
+Crisis resources: Umang 0317-4288665 | Rozan 051-2890505 | Edhi Foundation 115.
+
+GAMIFICATION IN MENTAL HEALTH
+Torres et al. (2023): 35% engagement increase via badges.
+Streaks, progress milestones, achievement badges improve adherence.
+Caution: rewards must not trivialize serious mental health content.
+
+EMOTION RECOGNITION
+Text-based: DistilBERT/RoBERTa fine-tuned on GoEmotions (27 categories, 58k samples, Google 2020).
+Voice-based: RAVDESS (24 actors, 8 emotions), IEMOCAP (improvised + scripted).
+Features: MFCC, pitch (F0), speech rate, energy, spectral centroid, zero crossing rate.
+Multimodal fusion improves accuracy significantly over single-modality.

@@ -1,0 +1,95 @@
+{
+  "session_id": "16608f27-3bdf-4767-b5a8-cd99b5604318",
+  "history": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Mira. I'm genuinely glad you're here today. This is a completely safe and confidential space \u2014 you can share whatever is on your mind, at your own pace, without any judgment at all.\n\nTo start us off \u2014 how have you been feeling lately?"
+    },
+    {
+      "role": "user",
+      "content": "I have been having really bad headaches every day for weeks. I also feel very tired but I can't sleep properly at night. I don't know what is wrong with me."
+    },
+    {
+      "role": "assistant",
+      "content": "It sounds like you're really struggling with some painful symptoms. Those headaches and fatigue can be incredibly debilitating. Can you tell me more about what's been going through your mind when you wake up feeling tired, but then can't fall asleep at night?"
+    },
+    {
+      "role": "user",
+      "content": "Everything just feels very heavy. I wake up at 3am and then can't go back to sleep. By morning I feel like I haven't slept at all."
+    },
+    {
+      "role": "assistant",
+      "content": "It sounds like you're feeling really exhausted and overwhelmed, even when you do manage to get some rest. That feeling of heaviness can be really hard to shake. You mentioned that everything feels heavy - can you think of anything in particular that's been weighing on your mind lately?"
+    },
+    {
+      "role": "user",
+      "content": "I used to enjoy reading and painting but now I can't even pick up a book. Nothing feels interesting anymore. I just sit and stare."
+    },
+    {
+      "role": "assistant",
+      "content": "It sounds like you're feeling really disconnected from things that used to bring you joy. That can be a really tough place to be. You mentioned that you just sit and stare - can you think of any moments when you've felt even the slightest spark of interest or pleasure recently?"
+    },
+    {
+      "role": "user",
+      "content": "My parents keep saying I am lazy. They don't understand. I try to do things but I just have no energy. I feel like I am letting everyone down."
+    },
+    {
+      "role": "assistant",
+      "content": "It sounds like you're feeling really frustrated and like you're carrying the weight of other people's expectations. That can be a heavy burden to bear. You said you feel like you're letting everyone down - can you tell me more about what's going through your mind when you think about that?"
+    }
+  ],
+  "turn_count": 4,
+  "progress": [
+    {
+      "turn": 3,
+      "PHQ-9": 2,
+      "GAD-7": 0,
+      "PSS-10": 0,
+      "SPIN": 0,
+      "risk": "low"
+    }
+  ],
+  "exercises_done": [],
+  "perf_rows": [
+    {
+      "turn": 1,
+      "latency_ms": 1672.8,
+      "prompt_tokens": 1334,
+      "completion_tokens": 51,
+      "response_length": 259,
+      "rag_used": true,
+      "emotion": "neutral",
+      "timestamp": "2026-04-18T17:30:13.576910+00:00"
+    },
+    {
+      "turn": 2,
+      "latency_ms": 492.1,
+      "prompt_tokens": 1418,
+      "completion_tokens": 57,
+      "response_length": 286,
+      "rag_used": true,
+      "emotion": "neutral",
+      "timestamp": "2026-04-18T17:30:38.449216+00:00"
+    },
+    {
+      "turn": 3,
+      "latency_ms": 482.2,
+      "prompt_tokens": 1556,
+      "completion_tokens": 57,
+      "response_length": 278,
+      "rag_used": true,
+      "emotion": "neutral",
+      "timestamp": "2026-04-18T17:30:49.259904+00:00"
+    },
+    {
+      "turn": 4,
+      "latency_ms": 509.5,
+      "prompt_tokens": 1584,
+      "completion_tokens": 60,
+      "response_length": 290,
+      "rag_used": true,
+      "emotion": "neutral",
+      "timestamp": "2026-04-18T17:31:13.047335+00:00"
+    }
+  ]
+}

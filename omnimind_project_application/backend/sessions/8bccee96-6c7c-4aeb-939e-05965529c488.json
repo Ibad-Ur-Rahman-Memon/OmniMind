@@ -1,0 +1,21 @@
+{
+  "session_id": "8bccee96-6c7c-4aeb-939e-05965529c488",
+  "history": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Mira. I'm genuinely glad you're here today. This is a completely safe and confidential space \u2014 you can share whatever is on your mind, at your own pace, without any judgment at all.\n\nTo start us off \u2014 how have you been feeling lately?"
+    },
+    {
+      "role": "user",
+      "content": "I have been having really bad headaches every day for weeks. I also feel very tired but I can't sleep properly at night. I don't know what is wrong with me."
+    },
+    {
+      "role": "assistant",
+      "content": "Technical issue \u2014 please try again. (Error code: 400 - {'error': {'message': 'The model `llama3-8)"
+    }
+  ],
+  "turn_count": 1,
+  "progress": [],
+  "exercises_done": [],
+  "perf_rows": []
+}

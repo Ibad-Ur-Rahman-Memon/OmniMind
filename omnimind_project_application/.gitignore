@@ -1,0 +1,36 @@
+# Root ignores (added for GitHub safety)
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# Virtual envs
+venv/
+venv_new/
+venv_temp_run/
+
+# Backend caches / indexes
+backend/cache/
+
+# Flutter build artifacts
+flutter_app/omnimind/build/
+flutter_app/omnimind/.dart_tool/
+flutter_app/omnimind/.flutter-plugins-dependencies
+flutter_app/omnimind/pubspec.lock.bak
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment secrets
+.env
+backend/.env
+flutter_app/omnimind/android/app/google-services.json
+flutter_app/omnimind/ios/Runner/GoogleService-Info.plist
+
+backendnul

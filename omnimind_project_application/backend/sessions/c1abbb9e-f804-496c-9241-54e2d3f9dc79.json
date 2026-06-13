@@ -1,0 +1,158 @@
+{
+  "session_id": "c1abbb9e-f804-496c-9241-54e2d3f9dc79",
+  "history": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Mira. I'm genuinely glad you're here today. This is a completely safe and confidential space \u2014 you can share whatever is on your mind, at your own pace, without any judgment at all.\n\nTo start us off \u2014 how have you been feeling lately?"
+    },
+    {
+      "role": "user",
+      "content": "I have been having really bad headaches every day for weeks. I also feel very tired but I can't sleep properly at night. I don't know what is wrong with me."
+    },
+    {
+      "role": "assistant",
+      "content": "It sounds like these headaches and fatigue are really impacting your daily life. Can you tell me more about what these headaches feel like? Is there anything specific that happens before they start, or any patterns you've noticed?"
+    },
+    {
+      "role": "user",
+      "content": "Everything just feels very heavy. I wake up at 3am and then can't go back to sleep. By morning I feel like I haven't slept at all."
+    },
+    {
+      "role": "assistant",
+      "content": "You're feeling like you're not getting any rest, even when you're trying to sleep. That must be really frustrating and tiring. It sounds like you're feeling a bit overwhelmed, and those headaches are just one part of it. Can you tell me more about what's been going on in your life lately that might be contributing to these feelings?"
+    },
+    {
+      "role": "user",
+      "content": "I used to enjoy reading and painting but now I can't even pick up a book. Nothing feels interesting anymore. I just sit and stare."
+    },
+    {
+      "role": "assistant",
+      "content": "It sounds like you're feeling a bit disconnected from things that used to bring you joy. That can be really sad and isolating. You're feeling stuck, and it's hard to find the energy to do things you used to love. Can you remember a specific moment when you felt like this started to change for you?"
+    },
+    {
+      "role": "user",
+      "content": "My parents keep saying I am lazy. They don't understand. I try to do things but I just have no energy. I feel like I am letting everyone down."
+    },
+    {
+      "role": "assistant",
+      "content": "It sounds like you're carrying a lot of weight on your shoulders, feeling like you're not meeting your family's expectations. That must be really painful for you. You're feeling like you're failing, even though you're trying your best. Can you tell me more about how it feels when your parents say you're lazy?"
+    },
+    {
+      "role": "assistant",
+      "content": "One of the most powerful tools in psychology is called a thought record. It helps us slow down automatic thoughts and examine them like a scientist \u2014 looking at the actual evidence. Can you think of a specific situation recently that felt distressing? We'll use it as our example."
+    },
+    {
+      "role": "assistant",
+      "content": "One of the most powerful tools in psychology is called a thought record. It helps us slow down automatic thoughts and examine them like a scientist \u2014 looking at the actual evidence. Can you think of a specific situation recently that felt distressing? We'll use it as our example."
+    },
+    {
+      "role": "user",
+      "content": "Sometimes I think I am a burden to my family. I feel so worthless. Like I am not good enough for anything."
+    },
+    {
+      "role": "assistant",
+      "content": "Those thoughts must be really painful for you. You're feeling like you're a burden, and that you're not good enough. That sounds like a very heavy weight to carry. Can you tell me more about what happens when you have these thoughts? Do you try to push them away, or do you get caught up in them?"
+    },
+    {
+      "role": "user",
+      "content": "I have been like this for almost two months now. I thought it would pass but it keeps getting worse."
+    },
+    {
+      "role": "assistant",
+      "content": "You're feeling like this has been going on for a long time, and it's only getting harder. That must be really frustrating and scary for you. It sounds like you're feeling a bit stuck, and like things are spiraling downward. I want you to know that you're not alone, and that we can work together to find a way to help you feel better. Would you be willing to try a gentle exercise to help calm your mind and body?"
+    }
+  ],
+  "turn_count": 6,
+  "progress": [
+    {
+      "turn": 3,
+      "PHQ-9": 2,
+      "GAD-7": 0,
+      "PSS-10": 0,
+      "SPIN": 0,
+      "risk": "low"
+    },
+    {
+      "turn": 6,
+      "PHQ-9": 6,
+      "GAD-7": 0,
+      "PSS-10": 0,
+      "SPIN": 0,
+      "risk": "moderate"
+    }
+  ],
+  "exercises_done": [
+    {
+      "id": "thought_record",
+      "name": "Thought Record",
+      "completed": false
+    },
+    {
+      "id": "thought_record",
+      "name": "Thought Record",
+      "completed": false
+    }
+  ],
+  "perf_rows": [
+    {
+      "turn": 1,
+      "latency_ms": 511.6,
+      "prompt_tokens": 1334,
+      "completion_tokens": 44,
+      "response_length": 230,
+      "rag_used": true,
+      "emotion": "neutral",
+      "timestamp": "2026-04-18T14:57:53.477198+00:00"
+    },
+    {
+      "turn": 2,
+      "latency_ms": 392.9,
+      "prompt_tokens": 1411,
+      "completion_tokens": 72,
+      "response_length": 334,
+      "rag_used": true,
+      "emotion": "neutral",
+      "timestamp": "2026-04-18T14:58:31.990376+00:00"
+    },
+    {
+      "turn": 3,
+      "latency_ms": 741.4,
+      "prompt_tokens": 1564,
+      "completion_tokens": 66,
+      "response_length": 298,
+      "rag_used": true,
+      "emotion": "neutral",
+      "timestamp": "2026-04-18T14:59:08.521498+00:00"
+    },
+    {
+      "turn": 4,
+      "latency_ms": 1702.8,
+      "prompt_tokens": 1601,
+      "completion_tokens": 67,
+      "response_length": 310,
+      "rag_used": true,
+      "emotion": "neutral",
+      "timestamp": "2026-04-18T14:59:46.716400+00:00"
+    },
+    {
+      "turn": 5,
+      "latency_ms": 406.8,
+      "prompt_tokens": 1824,
+      "completion_tokens": 68,
+      "response_length": 296,
+      "rag_used": true,
+      "emotion": "depression",
+      "timestamp": "2026-04-18T15:01:49.009010+00:00"
+    },
+    {
+      "turn": 6,
+      "latency_ms": 1132.6,
+      "prompt_tokens": 1930,
+      "completion_tokens": 94,
+      "response_length": 413,
+      "rag_used": true,
+      "emotion": "neutral",
+      "timestamp": "2026-04-18T15:02:03.062028+00:00"
+    }
+  ]
+}

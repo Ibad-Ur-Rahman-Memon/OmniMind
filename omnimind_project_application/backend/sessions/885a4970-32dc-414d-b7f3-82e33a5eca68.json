@@ -1,0 +1,32 @@
+{
+  "session_id": "885a4970-32dc-414d-b7f3-82e33a5eca68",
+  "history": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Mira. I'm genuinely glad you're here today. This is a completely safe and confidential space \u2014 you can share whatever is on your mind, at your own pace, without any judgment at all.\n\nTo start us off \u2014 how have you been feeling lately?"
+    },
+    {
+      "role": "user",
+      "content": "hi"
+    },
+    {
+      "role": "assistant",
+      "content": "It's nice to meet you too. I can tell you're feeling a bit reserved, and that's completely okay. Sometimes it's hard to put into words how we're feeling.\n\nCan you tell me a little bit about what brings you here today? What's been going on that's made you want to speak with me?"
+    }
+  ],
+  "turn_count": 1,
+  "progress": [],
+  "exercises_done": [],
+  "perf_rows": [
+    {
+      "turn": 1,
+      "latency_ms": 864.0,
+      "prompt_tokens": 1190,
+      "completion_tokens": 67,
+      "response_length": 277,
+      "rag_used": true,
+      "emotion": "neutral",
+      "timestamp": "2026-05-01T20:07:39.400120+00:00"
+    }
+  ]
+}

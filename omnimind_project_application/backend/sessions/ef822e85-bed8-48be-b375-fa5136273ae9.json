@@ -1,0 +1,32 @@
+{
+  "session_id": "ef822e85-bed8-48be-b375-fa5136273ae9",
+  "history": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Mira. I'm genuinely glad you're here today. This is a completely safe and confidential space \u2014 you can share whatever is on your mind, at your own pace, without any judgment at all.\n\nTo start us off \u2014 how have you been feeling lately?"
+    },
+    {
+      "role": "user",
+      "content": "I have been having really bad headaches every day for weeks. I also feel very tired but I can't sleep properly at night. I don't know what is wrong with me."
+    },
+    {
+      "role": "assistant",
+      "content": "Those headaches and sleep disturbances can be really distressing. I can sense how worried and exhausted you must be feeling right now. Can you tell me more about what it's like to experience these headaches? Is it a sharp pain, a dull ache, or something else entirely?"
+    }
+  ],
+  "turn_count": 1,
+  "progress": [],
+  "exercises_done": [],
+  "perf_rows": [
+    {
+      "turn": 1,
+      "latency_ms": 1220.6,
+      "prompt_tokens": 1334,
+      "completion_tokens": 56,
+      "response_length": 268,
+      "rag_used": true,
+      "emotion": "neutral",
+      "timestamp": "2026-04-18T15:07:32.441069+00:00"
+    }
+  ]
+}

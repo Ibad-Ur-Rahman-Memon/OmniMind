@@ -1,0 +1,310 @@
+// lib/features/assessments/assessment_screen.dart
+import 'dart:ui';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:percent_indicator/percent_indicator.dart';
+import '../../core/models/models.dart';
+import '../../core/services/api_service.dart';
+import '../../core/providers/app_providers.dart';
+import '../../core/risk/risk_engine.dart';
+import '../../shared/theme/app_theme.dart';
+
+class _C {
+  static const bg          = Color(0xFF07090F);
+  static const surface     = Color(0xFF0F1520);
+  static const card        = Color(0xFF131B2E);
+  static const cardBorder  = Color(0xFF1C2B45);
+  static const primary     = Color(0xFF7C6FF7);
+  static const accent      = Color(0xFF06D6A0);
+  static const accentGold  = Color(0xFFFFD166);
+  static const textSub     = Color(0xFF6B7A99);
+  static const textPrimary = Color(0xFFE8EAF6);
+
+  static const grad1 = [Color(0xFF7C6FF7), Color(0xFF4F46E5)];
+  static const grad2 = [Color(0xFF06D6A0), Color(0xFF118AB2)];
+  static const grad3 = [Color(0xFFFF6B6B), Color(0xFFFF9A3C)];
+  static const grad4 = [Color(0xFFFFD166), Color(0xFFFF9A3C)];
+
+  static const riskLow      = Color(0xFF4CAF50);
+  static const riskModerate = Color(0xFFFF9800);
+  static const riskHigh     = Color(0xFFF44336);
+  static const riskUnknown  = Color(0xFF6B7A99);
+
+  static String _toTitleCase(String s) => s.split('_').map((w) => w.isEmpty ? '' : w[0].toUpperCase() + w.substring(1)).join(' ');
+}
+
+class AssessmentScreen extends StatefulWidget {
+  const AssessmentScreen({super.key});
+  @override
+  State<AssessmentScreen> createState() => _AssessmentScreenState();
+}
+
+class _AssessmentScreenState extends State<AssessmentScreen> {
+  List<Assessment> _assessments = [];
+  String _overallRisk = 'unknown';
+  bool _loading = true;
+  int _lastMessageCount = 0;
+  Map<String, int> _localAnswers = {};
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _load());
+  }
+
+  Future<void> _load() async {
+    setState(() => _loading = true);
+    try {
+      final chat = context.read<ChatProvider>();
+      if (chat.sessionId != null) {
+        final resp = await ApiService().getAssessmentStatus(chat.sessionId!);
+        if (mounted) {
+          setState(() {
+            _assessments = resp.assessments;
+            _overallRisk = resp.overallRisk;
+            _loading = false;
+          });
+        }
+        return;
+      }
+    } catch (e) {}
+    if (mounted) {
+      setState(() {
+        _assessments = _getDefaultAssessments();
+        _overallRisk = _calculateLocalRisk();
+        _loading = false;
+      });
+    }
+  }
+
+  List<Assessment> _getDefaultAssessments() {
+    return [
+      Assessment(name: 'PHQ-9', fullName: 'Patient Health Questionnaire-9', domain: 'Depression', score: 0, answered: 0, totalQuestions: 9, completionPct: 0, severity: 'Minimal depression', severityColor: '#4CAF50', interpretation: 'Screens for depressive disorder severity.', questions: _phq9Questions()),
+      Assessment(name: 'GAD-7', fullName: 'Generalized Anxiety Disorder-7', domain: 'Anxiety', score: 0, answered: 0, totalQuestions: 7, completionPct: 0, severity: 'Minimal anxiety', severityColor: '#4CAF50', interpretation: 'Screens for generalized anxiety disorder.', questions: _gad7Questions()),
+      Assessment(name: 'PSS-10', fullName: 'Perceived Stress Scale-10', domain: 'Stress', score: 0, answered: 0, totalQuestions: 10, completionPct: 0, severity: 'Low stress', severityColor: '#4CAF50', interpretation: 'Measures perceived stress level.', questions: _pss10Questions()),
+      Assessment(name: 'SPIN', fullName: 'Social Phobia Inventory', domain: 'Social Anxiety', score: 0, answered: 0, totalQuestions: 17, completionPct: 0, severity: 'No social phobia', severityColor: '#4CAF50', interpretation: 'Screens for social anxiety disorder.', questions: _spinQuestions()),
+    ];
+  }
+
+  List<AssessmentQuestion> _phq9Questions() => [
+    AssessmentQuestion(id: 'phq1', text: 'Little interest or pleasure in doing things?', options: ['Not at all', 'Several days', 'More than half', 'Nearly every day'], scores: [0, 1, 2, 3]),
+    AssessmentQuestion(id: 'phq2', text: 'Feeling down, depressed, or hopeless?', options: ['Not at all', 'Several days', 'More than half', 'Nearly every day'], scores: [0, 1, 2, 3]),
+    AssessmentQuestion(id: 'phq3', text: 'Trouble falling or staying asleep, or sleeping too much?', options: ['Not at all', 'Several days', 'More than half', 'Nearly every day'], scores: [0, 1, 2, 3]),
+    AssessmentQuestion(id: 'phq4', text: 'Feeling tired or having little energy?', options: ['Not at all', 'Several days', 'More than half', 'Nearly every day'], scores: [0, 1, 2, 3]),
+    AssessmentQuestion(id: 'phq5', text: 'Poor appetite or overeating?', options: ['Not at all', 'Several days', 'More than half', 'Nearly every day'], scores: [0, 1, 2, 3]),
+    AssessmentQuestion(id: 'phq6', text: 'Feeling bad about yourself or that you are a failure?', options: ['Not at all', 'Several days', 'More than half', 'Nearly every day'], scores: [0, 1, 2, 3]),
+    AssessmentQuestion(id: 'phq7', text: 'Trouble concentrating on things?', options: ['Not at all', 'Several days', 'More than half', 'Nearly every day'], scores: [0, 1, 2, 3]),
+    AssessmentQuestion(id: 'phq8', text: 'Moving or speaking slowly, or being fidgety/restless?', options: ['Not at all', 'Several days', 'More than half', 'Nearly every day'], scores: [0, 1, 2, 3]),
+    AssessmentQuestion(id: 'phq9', text: 'Thoughts of hurting yourself or being better off dead?', options: ['Not at all', 'Several days', 'More than half', 'Nearly every day'], scores: [0, 1, 2, 3]),
+  ];
+
+  List<AssessmentQuestion> _gad7Questions() => [
+    AssessmentQuestion(id: 'gad1', text: 'Feeling nervous, anxious, or on edge?', options: ['Not at all', 'Several days', 'More than half', 'Nearly every day'], scores: [0, 1, 2, 3]),
+    AssessmentQuestion(id: 'gad2', text: 'Not being able to stop or control worrying?', options: ['Not at all', 'Several days', 'More than half', 'Nearly every day'], scores: [0, 1, 2, 3]),
+    AssessmentQuestion(id: 'gad3', text: 'Worrying too much about different things?', options: ['Not at all', 'Several days', 'More than half', 'Nearly every day'], scores: [0, 1, 2, 3]),
+    AssessmentQuestion(id: 'gad4', text: 'Trouble relaxing?', options: ['Not at all', 'Several days', 'More than half', 'Nearly every day'], scores: [0, 1, 2, 3]),
+    AssessmentQuestion(id: 'gad5', text: 'Being so restless that it is hard to sit still?', options: ['Not at all', 'Several days', 'More than half', 'Nearly every day'], scores: [0, 1, 2, 3]),
+    AssessmentQuestion(id: 'gad6', text: 'Becoming easily annoyed or irritable?', options: ['Not at all', 'Several days', 'More than half', 'Nearly every day'], scores: [0, 1, 2, 3]),
+    AssessmentQuestion(id: 'gad7', text: 'Feeling afraid as if something awful might happen?', options: ['Not at all', 'Several days', 'More than half', 'Nearly every day'], scores: [0, 1, 2, 3]),
+  ];
+
+  List<AssessmentQuestion> _pss10Questions() => [
+    AssessmentQuestion(id: 'pss1', text: 'Been upset because of something unexpected?', options: ['Never', 'Almost never', 'Sometimes', 'Fairly often', 'Very often'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'pss2', text: 'Unable to control important things in your life?', options: ['Never', 'Almost never', 'Sometimes', 'Fairly often', 'Very often'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'pss3', text: 'Felt nervous and stressed?', options: ['Never', 'Almost never', 'Sometimes', 'Fairly often', 'Very often'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'pss4', text: 'Felt confident about handling personal problems?', options: ['Never', 'Almost never', 'Sometimes', 'Fairly often', 'Very often'], scores: [4, 3, 2, 1, 0]),
+    AssessmentQuestion(id: 'pss5', text: 'Felt that things were going your way?', options: ['Never', 'Almost never', 'Sometimes', 'Fairly often', 'Very often'], scores: [4, 3, 2, 1, 0]),
+    AssessmentQuestion(id: 'pss6', text: 'Unable to cope with all the things you had to do?', options: ['Never', 'Almost never', 'Sometimes', 'Fairly often', 'Very often'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'pss7', text: 'Been able to control irritations in your life?', options: ['Never', 'Almost never', 'Sometimes', 'Fairly often', 'Very often'], scores: [4, 3, 2, 1, 0]),
+    AssessmentQuestion(id: 'pss8', text: 'Felt that you were on top of things?', options: ['Never', 'Almost never', 'Sometimes', 'Fairly often', 'Very often'], scores: [4, 3, 2, 1, 0]),
+    AssessmentQuestion(id: 'pss9', text: 'Been angered because of things outside your control?', options: ['Never', 'Almost never', 'Sometimes', 'Fairly often', 'Very often'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'pss10', text: 'Felt difficulties piling up so high you could not overcome?', options: ['Never', 'Almost never', 'Sometimes', 'Fairly often', 'Very often'], scores: [0, 1, 2, 3, 4]),
+  ];
+
+  List<AssessmentQuestion> _spinQuestions() => [
+    AssessmentQuestion(id: 'spin1', text: 'I am afraid of people in authority.', options: ['Not at all', 'A little bit', 'Somewhat', 'Very much', 'Extremely'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'spin2', text: 'I am bothered by blushing in front of people.', options: ['Not at all', 'A little bit', 'Somewhat', 'Very much', 'Extremely'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'spin3', text: 'Parties and social events scare me.', options: ['Not at all', 'A little bit', 'Somewhat', 'Very much', 'Extremely'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'spin4', text: 'I avoid talking to people I do not know.', options: ['Not at all', 'A little bit', 'Somewhat', 'Very much', 'Extremely'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'spin5', text: 'Fear of embarrassment causes me to avoid activities.', options: ['Not at all', 'A little bit', 'Somewhat', 'Very much', 'Extremely'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'spin6', text: 'Sweating in front of people causes me distress.', options: ['Not at all', 'A little bit', 'Somewhat', 'Very much', 'Extremely'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'spin7', text: 'I avoid going to parties.', options: ['Not at all', 'A little bit', 'Somewhat', 'Very much', 'Extremely'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'spin8', text: 'I avoid activities in which I am center of attention.', options: ['Not at all', 'A little bit', 'Somewhat', 'Very much', 'Extremely'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'spin9', text: 'Talking to strangers scares me.', options: ['Not at all', 'A little bit', 'Somewhat', 'Very much', 'Extremely'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'spin10', text: 'I avoid having to give speeches.', options: ['Not at all', 'A little bit', 'Somewhat', 'Very much', 'Extremely'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'spin11', text: 'I would do anything to avoid being criticized.', options: ['Not at all', 'A little bit', 'Somewhat', 'Very much', 'Extremely'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'spin12', text: 'Heart palpitations when with other people.', options: ['Not at all', 'A little bit', 'Somewhat', 'Very much', 'Extremely'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'spin13', text: 'I am afraid of doing things when people might be watching.', options: ['Not at all', 'A little bit', 'Somewhat', 'Very much', 'Extremely'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'spin14', text: 'Being embarrassed or looking stupid are my worst fears.', options: ['Not at all', 'A little bit', 'Somewhat', 'Very much', 'Extremely'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'spin15', text: 'I avoid speaking to authority figures.', options: ['Not at all', 'A little bit', 'Somewhat', 'Very much', 'Extremely'], scores: [0, 1, 2, 3, 4]),
+    AssessmentQuestion(id: 'spin16', text: 'Trembling or shaking in front of others is distressing.', options: ['Not at all', 'A little bit', 'Somewhat', 'Very much', 'Extremely'], scores: [0, 1, 2, 3, 4]),
+  ];
+
+  String _calculateLocalRisk() {
+    int phq = 0, gad = 0, pss = 0, spin = 0;
+    for (final a in _assessments) {
+      final name = a.name.toUpperCase();
+      if (name.contains('PHQ')) phq = a.score;
+      else if (name.contains('GAD')) gad = a.score;
+      else if (name.contains('PSS')) pss = a.score;
+      else if (name.contains('SPIN')) spin = a.score;
+    }
+    if (phq >= 20 || gad >= 15) return 'high';
+    if (phq >= 10 || gad >= 10 || pss >= 27) return 'moderate';
+    if (phq >= 5 || gad >= 5 || pss >= 14) return 'low';
+    return 'unknown';
+  }
+
+  void _onAnswer(String assessmentName, String questionId, int score) {
+    final key = '${assessmentName}_$questionId';
+    setState(() {
+      _localAnswers[key] = score;
+      _recalculateScores();
+      _overallRisk = _calculateLocalRisk();
+    });
+    _syncToBackend(assessmentName, questionId, score);
+  }
+
+  void _recalculateScores() {
+    for (int i = 0; i < _assessments.length; i++) {
+      final a = _assessments[i];
+      int total = 0, answered = 0;
+      for (final q in a.questions) {
+        final key = '${a.name}_${q.id}';
+        if (_localAnswers.containsKey(key)) {
+          total += _localAnswers[key]!;
+          answered++;
+        }
+      }
+      _assessments[i] = Assessment(
+        name: a.name, fullName: a.fullName, domain: a.domain, score: total,
+        answered: answered, totalQuestions: a.questions.length,
+        completionPct: (answered / a.questions.length * 100),
+        severity: a.severity, severityColor: a.severityColor, interpretation: a.interpretation,
+        questions: a.questions,
+      );
+    }
+  }
+
+  Future<void> _syncToBackend(String assessmentName, String questionId, int score) async {
+    try {
+      final chat = context.read<ChatProvider>();
+      if (chat.sessionId != null) {
+        await ApiService().submitAssessmentAnswer(
+          sessionId: chat.sessionId!, assessmentName: assessmentName,
+          questionId: questionId, score: score,
+        );
+      }
+    } catch (_) {}
+  }
+
+  Color _riskColor(String risk) {
+    switch (risk.toLowerCase()) {
+      case 'high': return _C.riskHigh;
+      case 'moderate': return _C.riskModerate;
+      case 'low': return _C.riskLow;
+      default: return _C.riskUnknown;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<ChatProvider>(builder: (context, chat, _) {
+      if (_assessments.isEmpty && _loading) {
+        return Scaffold(backgroundColor: _C.bg, body: Center(child: CircularProgressIndicator(color: _C.primary)));
+      }
+      return Scaffold(backgroundColor: _C.bg, appBar: AppBar(title: Text('Assessments', style: GoogleFonts.poppins(fontWeight: FontWeight.w600)), backgroundColor: _C.surface, foregroundColor: Colors.white, elevation: 0),
+        body: RefreshIndicator(onRefresh: _load, color: _C.primary,
+          child: SingleChildScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
+            padding: EdgeInsets.all(16),
+            child: Column(children: [
+              _buildOverallRiskCard(),
+              SizedBox(height: 16),
+              ..._assessments.asMap().entries.map((e) => _AssessmentCard(assessment: e.value, onAnswer: (qId, score) => _onAnswer(e.value.name, qId, score)).animate().fadeIn(delay: Duration(milliseconds: e.key * 100))),
+            ]),
+          ),
+        ),
+      );
+    });
+  }
+
+  Widget _buildOverallRiskCard() {
+    final color = _riskColor(_overallRisk);
+    final riskLabels = {'unknown': 'UNKNOWN', 'low': 'LOW RISK', 'moderate': 'MODERATE RISK', 'high': 'HIGH RISK'};
+    return Container(padding: EdgeInsets.all(20), decoration: BoxDecoration(gradient: LinearGradient(colors: [color.withOpacity(0.2), color.withOpacity(0.05)], begin: Alignment.topLeft, end: Alignment.bottomRight), borderRadius: BorderRadius.circular(16), border: Border.all(color: color.withOpacity(0.3)),
+      child: Column(children: [
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text(riskLabels[_overallRisk] ?? 'UNKNOWN', style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.bold, color: color))]),
+        SizedBox(height: 8),
+        Text(_overallRisk == 'unknown' ? 'Start answering questions to see your risk level' : 'Based on your assessment responses', style: GoogleFonts.poppins(fontSize: 12, color: _C.textSub)),
+      ]),
+    );
+  }
+}
+
+class _AssessmentCard extends StatefulWidget {
+  final Assessment assessment;
+  final Function(String, int) onAnswer;
+  const _AssessmentCard({required this.assessment, required this.onAnswer});
+  @override
+  State<_AssessmentCard> createState() => _AssessmentCardState();
+}
+
+class _AssessmentCardState extends State<_AssessmentCard> {
+  bool _expanded = false;
+  int _maxScoreFor(String name) { final n = name.toUpperCase(); if (n.contains('PHQ')) return 27; if (n.contains('GAD')) return 21; if (n.contains('PSS')) return 40; if (n.contains('SPIN')) return 68; return 100; }
+  List<Color> _getGrad(String domain) { switch (domain.toLowerCase()) { case 'depression': return _C.grad3; case 'anxiety': return _C.grad1; case 'stress': return _C.grad4; default: return _C.grad2; } }
+  String _getIcon(String domain) { switch (domain.toLowerCase()) { case 'depression': return '💔'; case 'anxiety': return '😰'; case 'stress': return '😣'; default: return '😟'; } }
+
+  @override
+  Widget build(BuildContext context) {
+    final maxScore = _maxScoreFor(widget.assessment.name);
+    final pct = maxScore > 0 ? widget.assessment.score / maxScore : 0.0;
+    final color = Color(int.parse(widget.assessment.severityColor.replaceFirst('#', '0xFF')));
+    return Container(margin: EdgeInsets.only(bottom: 12), decoration: BoxDecoration(color: _C.card, borderRadius: BorderRadius.circular(16), border: Border.all(color: _C.cardBorder)),
+      child: Column(children: [
+        InkWell(onTap: () => setState(() => _expanded = !_expanded),
+          child: Padding(padding: EdgeInsets.all(16), child: Row(children: [
+            Container(width: 48, height: 48, decoration: BoxDecoration(gradient: LinearGradient(colors: _getGrad(widget.assessment.domain)), borderRadius: BorderRadius.circular(12)), child: Center(child: Text(_getIcon(widget.assessment.domain), style: TextStyle(fontSize: 24)))),
+            SizedBox(width: 12),
+            Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(widget.assessment.name, style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white)),
+              Text('${widget.assessment.score}/${maxScore}', style: GoogleFonts.poppins(fontSize: 12, color: _C.textSub)),
+            ])),
+            CircularPercentIndicator(radius: 24, lineWidth: 4, percent: pct.clamp(0.0, 1.0), progressColor: color, backgroundColor: color.withOpacity(0.2), center: Text('${(pct * 100).round()}%', style: GoogleFonts.poppins(fontSize: 9, fontWeight: FontWeight.w600))),
+            SizedBox(width: 8),
+            Icon(_expanded ? Icons.expand_less : Icons.expand_more, color: _C.textSub),
+          ])),
+        ),
+        if (_expanded) Container(padding: EdgeInsets.fromLTRB(16, 0, 16, 16), child: Column(children: [
+          LinearPercentIndicator(leading: Text('Completion', style: GoogleFonts.poppins(fontSize: 10, color: _C.textSub)), percent: (widget.assessment.completionPct / 100).clamp(0.0, 1.0), progressColor: _C.accent, backgroundColor: _C.surface, barRadius: Radius.circular(4), padding: EdgeInsets.zero, lineHeight: 6),
+          SizedBox(height: 12),
+          ...widget.assessment.questions.map((q) => _QuestionRow(question: q, onAnswer: (s) => widget.onAnswer(q.id, s))),
+        ])),
+      ]),
+    );
+  }
+}
+
+class _QuestionRow extends StatelessWidget {
+  final AssessmentQuestion question;
+  final Function(int) onAnswer;
+  const _QuestionRow({required this.question, required this.onAnswer});
+  @override
+  Widget build(BuildContext context) {
+    return Container(margin: EdgeInsets.only(bottom: 8), padding: EdgeInsets.all(12), decoration: BoxDecoration(color: _C.surface, borderRadius: BorderRadius.circular(12), border: Border.all(color: _C.cardBorder)),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text(question.text, style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: Colors.white)),
+        SizedBox(height: 8),
+        Wrap(spacing: 6, runSpacing: 6, children: List.generate(question.options.length, (i) => GestureDetector(
+          onTap: () => onAnswer(question.scores[i]),
+          child: Container(padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6), decoration: BoxDecoration(color: _C.card, borderRadius: BorderRadius.circular(8), border: Border.all(color: _C.cardBorder)),
+            child: Text(question.options[i], style: GoogleFonts.poppins(fontSize: 11, color: _C.textSub)),
+          ),
+        ))),
+      ]),
+    );
+  }
+}
