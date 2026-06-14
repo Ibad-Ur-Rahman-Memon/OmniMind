@@ -20,7 +20,7 @@
 
 <br/>
 
-[📱 App Overview](#-app-overview) • [🏗️ Architecture](#️-system-architecture) • [✨ Features](#-features) • [🤖 AI & ML Pipeline](#-ai--ml-pipeline) • [🚀 Getting Started](#-getting-started) • [📊 Results](#-results--evaluation) • [👥 Team](#-team)
+[📱 App Screens](#-app-screens) • [🏗️ Architecture](#️-system-architecture) • [✨ Features](#-features) • [🤖 AI & ML Pipeline](#-ai--ml-pipeline) • [🚀 Getting Started](#-getting-started) • [📊 Results](#-results--evaluation) • [👥 Team](#-team)
 
 </div>
 
@@ -29,7 +29,10 @@
 ## 📋 Table of Contents
 
 - [About the Project](#-about-the-project)
-- [App Overview](#-app-overview)
+- [App Screens](#-app-screens)
+  - [Authentication](#authentication)
+  - [Patient Experience](#patient-experience)
+  - [Doctor / Clinician Experience](#doctor--clinician-experience)
 - [System Architecture](#️-system-architecture)
 - [Features](#-features)
 - [AI & ML Pipeline](#-ai--ml-pipeline)
@@ -47,8 +50,9 @@
 - [Limitations](#-limitations)
 - [Future Work](#-future-work)
 - [Team](#-team)
-- [Supervisor](#-supervisor)
+- [Supervisor and Co.](#-supervisor-and-co)
 - [Acknowledgements](#-acknowledgements)
+- [Key References](#-key-references)
 - [License](#-license)
 
 ---
@@ -69,19 +73,97 @@ OmniMind is designed as a **scalable, stigma-free, first line of support** — c
 
 ---
 
-## 📱 App Overview
+## 📱 App Screens
 
-| Screen | Description |
-|--------|-------------|
-| **Authentication** | Secure Firebase login/register with Patient & Doctor roles |
-| **Patient Dashboard** | Central hub — mood check-in, quick actions, emotion trends |
-| **AI Chat (Dr. Mira)** | LLM + RAG powered conversational therapy interface |
-| **Clinical Assessments** | PHQ-9, GAD-7, PSS-10, SPIN administered in-app |
-| **Assessment Results** | Severity classifications, emotion distribution, crisis alerts |
-| **Intervention Hub** | Personalized CBT exercises, breathing, mindfulness, journaling |
-| **Progress Dashboard** | Line/bar/donut charts tracking scores over time |
-| **Doctor Dashboard** | Clinician view — patient list, risk levels, session history |
-| **Profile & Settings** | User preferences, data management, offline toolkit access |
+### Authentication
+
+Secure onboarding with role selection (Patient / Doctor) via Firebase Authentication.
+
+<div align="center">
+<table>
+<tr>
+<td align="center" width="50%">
+<img src="assets/signup_screen.jpg" alt="Sign Up Screen" width="280"/><br/>
+<sub><b>Create Account</b> — Role selection (Patient/Doctor)</sub>
+</td>
+<td align="center" width="50%">
+<img src="assets/signin_screen.jpg" alt="Sign In Screen" width="280"/><br/>
+<sub><b>Sign In</b> — Welcome back + offline toolkit access</sub>
+</td>
+</tr>
+</table>
+</div>
+
+---
+
+### Patient Experience
+
+<div align="center">
+<table>
+<tr>
+<td align="center" width="50%">
+<img src="assets/patient_dashboard_screen.jpg" alt="Patient Dashboard" width="280"/><br/>
+<sub><b>Patient Dashboard</b> — Mood check-in, quick actions, emotion trends</sub>
+</td>
+<td align="center" width="50%">
+<img src="assets/patient_chat_screen.jpg" alt="AI Chat Screen" width="280"/><br/>
+<sub><b>AI Chat (Dr. Mira)</b> — LLM + RAG conversational therapy</sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="50%">
+<img src="assets/patient_assesment_screen.jpg" alt="Clinical Assessment Screen" width="280"/><br/>
+<sub><b>Clinical Assessment</b> — PHQ-9, GAD-7, PSS-10, SPIN</sub>
+</td>
+<td align="center" width="50%">
+<img src="assets/patient_exercises_screen.jpg" alt="Intervention Exercises Screen" width="280"/><br/>
+<sub><b>Mind Exercises</b> — Breathing, grounding, CBT thought records</sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="50%">
+<img src="assets/patient_diary_screen.jpg" alt="Patient Diary Screen" width="280"/><br/>
+<sub><b>Diary / Journaling</b> — Emotion tracking & reflective prompts</sub>
+</td>
+<td align="center" width="50%">
+<img src="assets/gamification_screen.jpg" alt="Gamification Screen" width="280"/><br/>
+<sub><b>Gamification</b> — Badges, streaks, and engagement milestones</sub>
+</td>
+</tr>
+</table>
+</div>
+
+---
+
+### Doctor / Clinician Experience
+
+<div align="center">
+<table>
+<tr>
+<td align="center" width="50%">
+<img src="assets/doctor_dashboard_screen.jpg" alt="Doctor Dashboard Screen" width="280"/><br/>
+<sub><b>Doctor Dashboard</b> — Total/active patients overview</sub>
+</td>
+<td align="center" width="50%">
+<img src="assets/doctor_existing_patients_screen.jpg" alt="Doctor Existing Patients Screen" width="280"/><br/>
+<sub><b>Patient List</b> — Risk-level indicators per patient</sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="50%">
+<img src="assets/doctor_overviewing_screen.jpg" alt="Doctor Overview Screen" width="280"/><br/>
+<sub><b>Clinical Overview</b> — Aggregated patient insights</sub>
+</td>
+<td align="center" width="50%">
+<img src="assets/doctor_overviewing_individual_patient_screen.jpg" alt="Doctor Individual Patient Screen" width="280"/><br/>
+<sub><b>Individual Patient View</b> — Emotion distribution & crisis alerts</sub>
+</td>
+</tr>
+</table>
+
+<img src="assets/doctor_overviewing_individual_patient_screen_2.jpg" alt="Doctor Individual Patient Session History" width="280"/><br/>
+<sub><b>Session History (Read-Only)</b> — Clinical observation view of chat transcripts</sub>
+</div>
 
 ---
 
@@ -230,7 +312,27 @@ explore what situations are contributing to these feelings? A helpful
 first step can be identifying common triggers and practicing grounding techniques.
 ```
 
-**Fine-Tuning Results:**
+### Training Loss Analysis
+
+<div align="center">
+<table>
+<tr>
+<td align="center" width="50%">
+<img src="assets/training_loss_per_epoch.jpg" alt="Training Loss per Epoch" width="380"/><br/>
+<sub><b>Training Loss per Epoch</b> — Converges from ~0.077 to ~0.021</sub>
+</td>
+<td align="center" width="50%">
+<img src="assets/train_vs_eval_loss.jpg" alt="Train vs Eval Loss" width="380"/><br/>
+<sub><b>Train vs Eval Loss</b> — Close tracking indicates minimal overfitting</sub>
+</td>
+</tr>
+</table>
+
+<img src="assets/loss_improvement_vs_previous_epoch.jpg" alt="Loss Improvement % per Epoch" width="500"/><br/>
+<sub><b>Loss Improvement % vs Previous Epoch</b> — 61.8% jump at epoch 2, stabilizing to single digits thereafter</sub>
+</div>
+
+**Fine-Tuning Results Summary:**
 
 | Epoch | Train Loss | Improvement |
 |-------|------------|-------------|
@@ -242,6 +344,11 @@ first step can be identifying common triggers and practicing grounding technique
 | E11 | 0.0214 | 2.7% |
 
 ### Model Comparison (Base vs Fine-Tuned)
+
+<div align="center">
+<img src="assets/Base_model_vs_finetuned_model_visualization.jpg" alt="Base vs Fine-Tuned Model Comparison" width="700"/><br/>
+<sub><b>BERTScore & ROUGE/BLEU/METEOR Comparison</b> — OmniMind (fine-tuned) vs. Base LLaMA 3.1-8B</sub>
+</div>
 
 | Metric | Base LLaMA 3.1-8B | OmniMind (Fine-Tuned) |
 |--------|-------------------|----------------------|
@@ -304,6 +411,11 @@ Therapeutic Response → User
 
 All instruments are implemented per their **published clinical guidelines** and manually validated for scoring accuracy.
 
+<div align="center">
+<img src="assets/patient_assesment_screen.jpg" alt="Clinical Assessment Module Screen" width="280"/><br/>
+<sub><b>In-App Assessment</b> — DSM-5 validated clinical tools with live scoring</sub>
+</div>
+
 ### Conversational Assessment Layer
 
 Supplements structured instruments with open-ended questions that reduce clinical pressure and encourage natural emotional expression:
@@ -360,6 +472,25 @@ Supplements structured instruments with open-ended questions that reduce clinica
 
 ```
 OmniMind/
+│
+├── assets/                               # README images (screens, charts)
+│   ├── signup_screen.jpg
+│   ├── signin_screen.jpg
+│   ├── patient_dashboard_screen.jpg
+│   ├── patient_chat_screen.jpg
+│   ├── patient_assesment_screen.jpg
+│   ├── patient_exercises_screen.jpg
+│   ├── patient_diary_screen.jpg
+│   ├── gamification_screen.jpg
+│   ├── doctor_dashboard_screen.jpg
+│   ├── doctor_existing_patients_screen.jpg
+│   ├── doctor_overviewing_screen.jpg
+│   ├── doctor_overviewing_individual_patient_screen.jpg
+│   ├── doctor_overviewing_individual_patient_screen_2.jpg
+│   ├── training_loss_per_epoch.jpg
+│   ├── train_vs_eval_loss.jpg
+│   ├── loss_improvement_vs_previous_epoch.jpg
+│   └── Base_model_vs_finetuned_model_visualization.jpg
 │
 ├── omnimind_project_application/        # Flutter mobile application
 │   ├── lib/
@@ -638,41 +769,46 @@ OmniMind was built with ethics as a core design principle, guided by **beneficen
       <strong>Ibad Ur Rahman</strong><br/>
       <sub>Student ID: 133-22-0004</sub><br/>
       <sub>BE Computer Systems Engineering</sub><br/>
-      <sub>Sukkur IBA University</sub>
+      <sub>Sukkur IBA University</sub><br/>
+      📧 <a href="mailto:ibad.cse@gmail.com">ibad.cse@gmail.com</a><br/>
+      📧 <a href="mailto:ibadurrahmanmemon.becsef22@iba-suk.edu.pk">ibadurrahmanmemon.becsef22@iba-suk.edu.pk</a>
     </td>
     <td align="center">
       <strong>Khalid Hussain</strong><br/>
       <sub>Student ID: 133-22-0011</sub><br/>
       <sub>BE Computer Systems Engineering</sub><br/>
-      <sub>Sukkur IBA University</sub>
+      <sub>Sukkur IBA University</sub><br/>
+      📧 <a href="mailto:khalidhussain.becsef22@iba-suk.edu.pk">khalidhussain.becsef22@iba-suk.edu.pk</a>
     </td>
     <td align="center">
       <strong>Shafique Ahmed</strong><br/>
       <sub>Student ID: 133-20-0006</sub><br/>
       <sub>BE Computer Systems Engineering</sub><br/>
-      <sub>Sukkur IBA University</sub>
+      <sub>Sukkur IBA University</sub><br/>
+      📧 <a href="mailto:shafiqueahmed.becsef22@iba-suk.edu.pk">shafiqueahmed.becsef22@iba-suk.edu.pk</a>
     </td>
   </tr>
 </table>
 
 ---
 
-## 👨‍🏫 Supervisor and Co.
+## 👨‍🏫 Supervisor & Co.
 
 **Dr. Abdul Sattar Chan**  
 Department of Computer Systems Engineering  
-Sukkur IBA University, Sukkur, Pakistan
+Sukkur IBA University, Sukkur, Pakistan  
+📧 [abdul.sattar@iba-suk.edu.pk](mailto:abdul.sattar@iba-suk.edu.pk)
 
 **Engr. Umair Ayaz Kamangar**  
 Department of Computer Systems Engineering  
-Sukkur IBA University, Sukkur, Pakistan
-
+Sukkur IBA University, Sukkur, Pakistan  
+📧 [umair.ayaz@iba-suk.edu.pk](mailto:umair.ayaz@iba-suk.edu.pk)
 
 ---
 
 ## 🙏 Acknowledgements
 
-- **Dr. Abdul Sattar Chan And Engr. Umair Ayaz Kamanagr** — for guidance, mentorship, and shaping the research direction throughout the FYP
+- **Dr. Abdul Sattar Chan and Engr. Umair Ayaz Kamangar** — for guidance, mentorship, and shaping the research direction throughout the FYP
 - **Sukkur IBA University** — for providing the academic environment, resources, and facilities
 - **Pakistan Engineering Council (PEC)** — for support enabling successful project completion
 - **Abdul Rehman Memon** (PMDC-Registered Psychologist & Hypnotherapist) — for clinical validation consultation and sign-off on the OmniMind therapeutic framework
